@@ -1,0 +1,49 @@
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+export interface BaseOrderQuery {
+  page?: number;
+  limit?: number;
+  year?: number;
+  month?: number;
+  day?: number;
+  userId?: string;
+  customerName?: string;
+  totalPriceSort?: string;
+  productQuantitySort?: string;
+  orderStatus?: string;
+  startDate?: string;
+  endDate?: string;
+}
+
+export const orderStatsAPI = createApi({
+  reducerPath: "orderStatsAPI",
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${process.env.NEXT_PUBLIC_API_URL}`,
+    prepareHeaders: (headers) => {
+      headers.set("ngrok-skip-browser-warning", "69420");
+      return headers;
+    },
+  }),
+  tagTypes: ["Orders"],
+
+  endpoints: (builder) => ({
+    getOrderStats: builder.query<any, BaseOrderQuery>({
+      query: (params: BaseOrderQuery) => {
+        const queryParams = new URLSearchParams(params as any).toString();
+        const url = `orderStats?${queryParams}`;
+        return url;
+      },
+      providesTags: ["Orders"],
+    }),
+    getBookingStats: builder.query<any, BaseOrderQuery>({
+      query: (params: BaseOrderQuery) => {
+        const queryParams = new URLSearchParams(params as any).toString();
+        const url = `bookingStats?${queryParams}`;
+        return url;
+      },
+      providesTags: ["Orders"],
+    }),
+  }),
+});
+
+export const { useGetOrderStatsQuery, useGetBookingStatsQuery } = orderStatsAPI;

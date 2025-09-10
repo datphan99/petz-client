@@ -1,0 +1,208 @@
+const dummyFeedback = [
+  {
+    reviewContent: "Thức ăn mèo GLOW UP rất ngon, mèo nhà tôi ăn khỏe hẳn!",
+    _id: "673c968652d570b52a16206c",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 5,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Mèo tôi có vẻ thích hương vị, nhưng giá hơi cao.",
+    _id: "673c968752d570b52a16206d",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 4,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Hạt có độ giòn vừa phải, mèo ăn không chê!",
+    _id: "673c968852d570b52a16206e",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 5,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Mèo con nhà tôi ăn xong lông mượt hẳn, thích!",
+    _id: "673c968952d570b52a16206f",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 5,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Mèo có vẻ không hứng thú lắm, chắc không hợp vị.",
+    _id: "673c968a52d570b52a162070",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 3,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Hạt to vừa, mèo lớn nhai giòn rụm, rất thích!",
+    _id: "673c968b52d570b52a162071",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 4,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Sau khi ăn loại này, mèo trông năng động hẳn.",
+    _id: "673c968c52d570b52a162072",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 5,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Mùi thơm nhẹ, mèo ăn hết sạch bát, giá hợp lý.",
+    _id: "673c968d52d570b52a162073",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 5,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Mèo không bị tiêu chảy sau khi ăn, ổn!",
+    _id: "673c968e52d570b52a162074",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 4,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Chất lượng ổn, mèo nhà tôi ăn được vài tuần rồi.",
+    _id: "673c968f52d570b52a162075",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 4,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Mèo kén ăn của tôi cũng ăn hết, rất tuyệt!",
+    _id: "673c969052d570b52a162076",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 5,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+  {
+    reviewContent: "Sẽ mua lại lần sau, mèo nhà tôi ăn lên cân!",
+    _id: "673c969152d570b52a162077",
+    userId: {
+      _id: "67344b2ca1fd8052fa19f423",
+      userEmail: "tuyendat2419@gmail.com",
+    },
+    rating: 5,
+    productId: {
+      _id: "670bb9fe9ec68c77538f9fa4",
+      productSlug: "cec",
+    },
+    productName: "Thức ăn mèo GLOW UP",
+    createdAt: "2024-11-07T10:28:45.511Z",
+    __v: 0,
+    publicStatus: true,
+  },
+];
+
+export default dummyFeedback;
