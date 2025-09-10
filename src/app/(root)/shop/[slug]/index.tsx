@@ -1,11 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { lazy, useEffect } from "react";
 import { useGetProductsQuery } from "@/libs/features/services/product";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import "./index.css";
-import SuggestedProducts from "@/components/pages/Details/SuggestedProducts";
+const SuggestedProducts = lazy(
+  () => import("@/components/pages/Details/SuggestedProducts"),
+);
 import { useAddItemToCartMutation } from "@/libs/features/services/cart";
 import { useSession } from "next-auth/react";
 import { message } from "antd";
@@ -14,11 +16,12 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import NormalTransitionLink from "@/components/ui/NormalTransitionLink";
 import { useDispatch } from "react-redux";
 import { cartAction } from "@/libs/features/cart/cart";
+import ProductListSkeleton from "@/components/pages/Shop/ProductListSkeleton";
 export const Index = () => {
   const { slug } = useParams();
   const [addToCart, { data: newCart }] = useAddItemToCartMutation();
   const productSlug = Array.isArray(slug) ? slug[0] : slug;
-  const { data, error, isLoading } = useGetProductsQuery({ productSlug });
+  const { data, isLoading } = useGetProductsQuery({ productSlug });
   const [quantity, setQuantity] = useState(1);
   const [index, setIndex] = useState(0);
   const [maxQuantity, setMaxQuantity] = useState(0);
@@ -55,26 +58,6 @@ export const Index = () => {
       ),
       duration: 1,
       className: "custom-message",
-    });
-  };
-
-  const errorModal = () => {
-    message.error({
-      content: (
-        <div className="flex gap-2">
-          Bạn cần đăng nhập để thêm vào giỏ hàng.{" "}
-          <div
-            onClick={() => {
-              animatePageOut("/auth", router);
-            }}
-            className="cursor-pointer text-blue-500"
-          >
-            Đăng nhập
-          </div>
-        </div>
-      ),
-      duration: 1,
-      className: "custom-message", // Optionally for further styling if needed
     });
   };
 
@@ -327,13 +310,21 @@ export const Index = () => {
           </div>
         );
       })}
-      <div id="this-zone">
+      <div>
         <h1 className="mt-8 text-[28px] font-[500]">SẢN PHẨM GỢI Ý</h1>
         <div>
           <div>
-            <SuggestedProducts
-              categoryId={data?.products[0]?.productCategory || ""}
-            />
+            {!isLoading && (
+              <SuggestedProducts
+                categoryId={data?.products[0]?.productCategory || ""}
+              />
+            )}
+            <div className="grid grid-cols-4 gap-4">
+              {isLoading &&
+                Array.from({ length: 4 }).map((_, index) => (
+                  <ProductListSkeleton key={index} />
+                ))}
+            </div>
           </div>
         </div>
       </div>
