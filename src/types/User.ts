@@ -44,7 +44,7 @@ export interface User {
   userAddress: string;
   userEmail: string;
   userPhone: string;
-  userRole: "admin" | "user" | "staff";
+  userRole: "admin" | "user" | "staff" | "spa" | "seller";
   userPoint: number;
   userVoucher: string[];
   userOrders: UserOrder[];
