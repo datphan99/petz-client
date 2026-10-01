@@ -33,22 +33,22 @@ const ProductInfo = memo(
     const { salePrice } = calculateSalePrice(salePercent, productPrice);
 
     return (
-      <div className="absolute bottom-4 left-4 items-center justify-between text-left">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white/90 to-transparent px-2 pb-2 pt-6 text-left sm:px-4 sm:pb-4">
         <div>
-          <h2 className="flex justify-between font-serif text-[14px] text-black lg:text-[16px]">
+          <h2 className="line-clamp-2 break-words font-serif text-[14px] leading-snug text-black lg:text-[16px]">
             {productName}
           </h2>
-          <h2 className="text-[12px] text-gray-500 lg:text-[14px]">
-            <div className="space-x-2">
+          <div className="text-[12px] text-gray-500 lg:text-[14px]">
+            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
               <span>{formatMoney(salePrice)}</span>
               {salePercent > 0 && (
                 <del>{formatMoney(selectedOption?.productPrice)}</del>
               )}
-              <span className="ml-auto text-[13px] text-gray-400">
+              <span className="min-w-0 break-words text-[12px] text-gray-500 lg:text-[13px]">
                 ({selectedOption?.name})
               </span>
             </div>
-          </h2>
+          </div>
         </div>
       </div>
     );

@@ -101,12 +101,18 @@ export default function ProductCardCartButton({
   }, [newCart]);
 
   return (
-    <div className="group absolute right-2 top-1 text-white lg:right-2 lg:top-2 2xl:right-6">
+    <div className="group absolute right-2 top-2 z-10">
       <button
+        type="button"
+        aria-label={`Thêm ${Product.productName} vào giỏ hàng`}
         onClick={handleAddToCart}
-        className="w-fit rounded-full bg-white p-1 text-black transition delay-75 duration-300 group-hover:bg-gray-100 md:p-3 lg:p-3"
+        className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white text-black shadow-sm transition-colors hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
-        <Icon className="size-4 lg:size-5" icon="icon-park-outline:mall-bag" />
+        <Icon
+          className="size-5 shrink-0"
+          icon="icon-park-outline:mall-bag"
+          aria-hidden="true"
+        />
       </button>
       {contextHolder}
     </div>

@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import Image from "next/image";
 import ProductInfo from "./ProductInfo";
 import { Product } from "@/types/Product";
@@ -15,27 +15,39 @@ interface ProductBoxProps {
 const ProductCard = memo(
   ({ Product, additionalClassess, priceSort }: ProductBoxProps) => {
     const productThumbnail = Product?.productThumbnail;
+    const [settledImage, setSettledImage] = useState<string | null>(null);
+    const isImageLoading = settledImage !== productThumbnail;
 
     return (
-      <div className={`${additionalClassess} `}>
-        <div className="relative block">
+      <div className={`min-w-0 ${additionalClassess ?? ""}`}>
+        <div className="relative isolate overflow-hidden rounded-md">
           <div>
             <NormalTransitionLink
-              className="cursor-none"
-              href={`shop/${Product?.productSlug}`}
+              className="!w-full !max-w-none cursor-none"
+              href={`/shop/${Product?.productSlug}`}
             >
+              {isImageLoading && (
+                <div
+                  role="status"
+                  className="pointer-events-none absolute inset-0 -z-10 bg-gray-200 motion-safe:animate-pulse dark:bg-gray-800"
+                >
+                  <span className="sr-only">Đang tải ảnh sản phẩm...</span>
+                </div>
+              )}
               <Image
-                className="rounded-xl select-none rounded-md object-cover"
+                className="aspect-square w-full select-none object-cover"
                 src={productThumbnail}
                 alt="Product Image"
-                priority
+                loading="lazy"
+                sizes="(max-width: 767px) 50vw, (max-width: 1279px) 33vw, 25vw"
                 width={500}
                 height={500}
-                style={{ width: "100%", height: "100%" }}
+                onLoad={() => setSettledImage(productThumbnail)}
+                onError={() => setSettledImage(productThumbnail)}
               />
               {Product.salePercent >= 1 && (
                 <>
-                  <p className="absolute left-2 top-2 rounded-lg bg-black px-4 py-1 text-[10px] text-white md:text-base">
+                  <p className="absolute left-2 top-2 rounded-lg bg-black px-2 py-1 text-[10px] text-white md:px-4 md:text-base">
                     {Product.salePercent}%
                   </p>
                 </>

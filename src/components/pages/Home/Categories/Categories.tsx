@@ -36,7 +36,7 @@ export default function Categories() {
   }, []);
 
   const [filterOption, setFilterOption] = useState<FilterProductState>({
-    sortBy: "lastest",
+    sortBy: "latest",
   });
   const [currentFilter, setCurrentFilter] = useState("lastest");
 
